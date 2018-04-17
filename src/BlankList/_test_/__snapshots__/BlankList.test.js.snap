@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlankList renders a simple element 1`] = `
+<div
+  className="blankList"
+>
+  <p>
+    No repos to show.
+  </p>
+</div>
+`;
