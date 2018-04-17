@@ -5,7 +5,7 @@ class BlankList extends Component {
     render() {
         return (
             <div className="blankList">
-                <p>search me</p>
+                <p>No repos to show.</p>
             </div>
         )
     }
