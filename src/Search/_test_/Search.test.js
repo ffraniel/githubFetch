@@ -12,7 +12,6 @@ test('filler test', () => {
       <Search />
   );
   const searchForm = wrapper.find('.searchForm');
-  console.log(searchForm);
   expect(2+1).toBe(3);
 //   expect(searchForm.text()).toBe('hya');
 })
