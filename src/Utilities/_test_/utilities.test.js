@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fetchRepos, useRepos } from '../utilities';
+import { fetchRepos, useRepos, paginateCalc } from '../utilities';
 
 test('fetchRepos returns response from github', async () => {
     const data = await fetchRepos('test', 1);
@@ -83,5 +83,25 @@ test('tests useRepos puts items in foundRepos', () => {
     expect(typeof foundRepos[0]).toBe("object");
     expect(typeof foundRepos[0].name).toBe("string");
     expect(foundRepos[0].name).toBe(fakeReponse.body.items[0].name);
+
+})
+
+test('paginationCalc works out how many pages they are', () => {
+    const fakeReponse3 = { 
+        body:
+        { total_count: 245,
+        incomplete_results: false,
+        items: [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+        }
+    };
+    const numberOfPages1 = paginateCalc(fakeReponse3);
+    expect(numberOfPages1).toBe(25);
+
+    const fakeReponse4 = { 
+        body: { total_count: 83}
+    };
+
+    const numberOfPages2 = paginateCalc(fakeReponse4)
+    expect(numberOfPages2).toBe(9);
 
 })

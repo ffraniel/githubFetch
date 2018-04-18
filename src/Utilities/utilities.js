@@ -1,4 +1,4 @@
-export const fetchRepos = (searchValue, pageNum) => {
+export const fetchRepos = (searchValue, pageNum = 1) => {
     let response = {};
     return fetch(`https://api.github.com/search/repositories?q=${searchValue}&page=${pageNum}&per_page=10`, {
         headers:{
@@ -21,3 +21,8 @@ export const useRepos = (searchResults, state) => {
         foundRepos:items
     }
 } 
+
+export const paginateCalc = (data) => {
+    let numOfPages = Math.ceil(data.body.total_count / 10);
+    return numOfPages; 
+}
