@@ -1,5 +1,4 @@
 export const fetchRepos = (searchValue, pageNum) => {
-    let link;
     let response = {};
     return fetch(`https://api.github.com/search/repositories?q=${searchValue}&page=${pageNum}&per_page=10`, {
         headers:{
@@ -7,11 +6,9 @@ export const fetchRepos = (searchValue, pageNum) => {
         }
     })
     .then(resbuffer => {
-        link = resbuffer.headers.map.link;
         return resbuffer.json();
     })
     .then(res => {
-        response.headers = { link };
         response.body = res;
         return response;
     })

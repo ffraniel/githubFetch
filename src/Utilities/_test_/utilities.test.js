@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import { fetchRepos, useRepos } from '../utilities';
 
 test('fetchRepos returns response from github', async () => {
-    const data = await fetchRepos('test');
+    const data = await fetchRepos('test', 1);
+
     expect(typeof data).toBe("object");
     expect(typeof data.body).toBe("object");
     expect(Array.isArray(data.body.items)).toBe(true);
-    expect(typeof data.headers).toBe("object");
-    expect(typeof data.headers.link).toBe("string");
 })
 
 test('tests useRepos return a state object', () => {
@@ -17,16 +16,12 @@ test('tests useRepos return a state object', () => {
     }
 
     const fakeReponse = { 
-        headers: 
-            { 
-                link: '<https://api.github.com/search/repositories?q=test&page=2>; rel="next", <https://api.github.com/search/repositories?q=test&page=34>; rel="last"' 
-            },
-    body:
-     { total_count: 2617160,
-       incomplete_results: false,
-       items: [ {}, {} ]
-     }
- };
+        body:
+        { total_count: 2617160,
+        incomplete_results: false,
+        items: [ {}, {} ]
+        }
+    };
     const state = useRepos(fakeReponse, dummyState);
     const foundRepos = state.foundRepos;
     expect(typeof state).toBe("object");
@@ -39,50 +34,47 @@ test('tests useRepos puts items in foundRepos', () => {
     }
 
     const fakeReponse = { 
-        headers: 
-            { 
-                link: '<https://api.github.com/search/repositories?q=test&page=2>; rel="next", <https://api.github.com/search/repositories?q=test&page=34>; rel="last"' 
-            },
-    body:
-     { total_count: 2,
-       incomplete_results: false,
-       items: [ 
-        {
-            id: 11111111,
-            name: 'test',
-            full_name: 'coolTest',
-            owner:
-            { 
-                login: 'tester1',
-                id: 1000000,
-            },
-            forks_count:322,
-            forks_url: 'https://api.github.com/repos/pytest-dev/pytest/forks',
-            has_issues: true,
-            open_issues_count: 34,
-            issue_comment_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/comments',
-            issues_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues',
-            issue_events_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/events'
-        }, 
-        {
-            id: 22222222,
-            name: 'test1',
-            full_name: 'coolTest1',
-            owner:
-            { 
-                login: 'tester1',
+        body:
+        { total_count: 2,
+        incomplete_results: false,
+        items: [ 
+            {
                 id: 11111111,
-            },
-            forks_count: 21,
-            forks_url: 'https://api.github.com/repos/pytest-dev/pytest/forks',
-            has_issues: true,
-            open_issues_count: 34,
-            issue_comment_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/comments',
-            issues_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues',
-            issue_events_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/events'
-        } ]
-    }
- };
+                name: 'test',
+                full_name: 'coolTest',
+                owner:
+                { 
+                    login: 'tester1',
+                    id: 1000000,
+                },
+                forks_count:322,
+                forks_url: 'https://api.github.com/repos/pytest-dev/pytest/forks',
+                has_issues: true,
+                open_issues_count: 34,
+                issue_comment_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/comments',
+                issues_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues',
+                issue_events_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/events'
+            }, 
+            {
+                id: 22222222,
+                name: 'test1',
+                full_name: 'coolTest1',
+                owner:
+                { 
+                    login: 'tester1',
+                    id: 11111111,
+                },
+                forks_count: 21,
+                forks_url: 'https://api.github.com/repos/pytest-dev/pytest/forks',
+                has_issues: true,
+                open_issues_count: 34,
+                issue_comment_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/comments',
+                issues_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues',
+                issue_events_url: 'https://api.github.com/repos/marmelab/gremlins.js/issues/events'
+            } ]
+        }
+    };
+
     const state = useRepos(fakeReponse, dummyState);
     const foundRepos = state.foundRepos;
     const fetchedReposLength = fakeReponse.body.items.length;
@@ -91,4 +83,5 @@ test('tests useRepos puts items in foundRepos', () => {
     expect(typeof foundRepos[0]).toBe("object");
     expect(typeof foundRepos[0].name).toBe("string");
     expect(foundRepos[0].name).toBe(fakeReponse.body.items[0].name);
+
 })
