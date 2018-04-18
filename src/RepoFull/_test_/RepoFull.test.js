@@ -7,19 +7,25 @@ import RepoFull from '../RepoFull';
 
 configure({ adapter: new Adapter() });
 
-test('filler test', () => {
-    expect(2+2).toBe(4);
+test('RepoFull renders a simple element', () => {
+    const wrapper = mount(
+        <RepoFull />
+    );
+    const repoName = wrapper.find('.repo-full-name');
+    expect(typeof repoName.text()).toBe("string");
+
+    const repoAuthor = wrapper.find('.repo-full-author');
+    expect(typeof repoAuthor.text()).toBe("string");
+
+    const repoReadme = wrapper.find('.repo-full-readme');
+    expect(typeof repoReadme.text()).toBe("string");
+
+    const repoInfo = wrapper.find('.repo-info');
+    expect(repoInfo.children().length).toEqual(2)
+
+
+    // const rendered = renderer.create(
+    //     <RepoFull />
+    // );
+    // expect(rendered.toJSON()).toMatchSnapshot();
 })
-
-// test('RepoFull renders a simple element', () => {
-//     const wrapper = mount(
-//         <RepoFull />
-//     );
-//     const textP = wrapper.find('.blankList p');
-//     expect(textP.text()).toBe("No repos to show.");
-
-//     const rendered = renderer.create(
-//         <RepoFull />
-//     );
-//     expect(rendered.toJSON()).toMatchSnapshot();
-// })
