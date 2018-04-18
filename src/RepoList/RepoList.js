@@ -10,11 +10,11 @@ class RepoList extends Component {
         return (
             <div className="repoList">
                 <PaginationElement />
-                <Repo />
-                <Repo />
-                <Repo />
-                <Repo />
-                <Repo />
+                    <Repo />
+                    <Repo />
+                    <Repo />
+                    <Repo />
+                    <Repo />
                 <PaginationElement />
             </div>
         )

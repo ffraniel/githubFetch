@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders with title  1`] = `
+<header
+  className="header"
+>
+  <h1
+    className="header-title"
+  >
+    The Repo Room
+  </h1>
+  <form
+    className="searchForm"
+  >
+    <input
+      type="text"
+    />
+    <input
+      type="submit"
+    />
+  </form>
+</header>
+`;
