@@ -7,7 +7,7 @@ class Header extends Component {
         return(
         <header className="header">
           <h1 className="header-title">The Repo Room</h1>
-          <Search />
+          <Search handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit}/>
         </header>
         )
     }

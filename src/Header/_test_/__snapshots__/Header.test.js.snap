@@ -11,9 +11,12 @@ exports[`Header renders with title  1`] = `
   </h1>
   <form
     className="searchForm"
+    onSubmit={undefined}
   >
     <input
+      onChange={undefined}
       type="text"
+      value={undefined}
     />
     <input
       type="submit"
