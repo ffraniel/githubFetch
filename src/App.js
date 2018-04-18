@@ -16,7 +16,7 @@ class App extends Component {
           <Switch >
             <Route exact path="/" component={RepoList} />
             <Route path="/repo/:repoID" component={RepoFull} />
-            {/* <Route default component={BlankList}/> */}
+            <Route default component={BlankList}/>
           </Switch>
         </div>
       </BrowserRouter>
