@@ -8,8 +8,14 @@ import RepoFull from '../RepoFull';
 configure({ adapter: new Adapter() });
 
 test('RepoFull renders a simple element', () => {
+    const match ={
+        params:{
+            name:"name",
+            owner:"owner"
+        }
+    }
     const wrapper = mount(
-        <RepoFull />
+        <RepoFull match={match} />
     );
     const repoName = wrapper.find('.repo-full-name');
     expect(typeof repoName.text()).toBe("string");
