@@ -110,8 +110,6 @@ test('getRepo returns an individual object containing repo json', async ()=>{
     let repoUser = "ffraniel";
     let repoName = "jenniW";
     let data = await getRepo(repoUser, repoName);
-    console.log(data)
-    expect(1+1).toBe(2);
     expect(typeof data).toBe("object");
     expect(data.name).toBe(repoName);
     expect(data.owner.login).toBe(repoUser);
