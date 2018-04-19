@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fetchRepos, useRepos, paginateCalc, getRepo } from '../utilities';
+import { fetchRepos, useRepos, paginateCalc, getRepo, getUser } from '../utilities';
 
 test('fetchRepos returns response from github', async () => {
     const data = await fetchRepos('test', 1);
@@ -113,4 +113,11 @@ test('getRepo returns an individual object containing repo json', async ()=>{
     expect(typeof data).toBe("object");
     expect(data.name).toBe(repoName);
     expect(data.owner.login).toBe(repoUser);
+})
+
+test('getUser returns an individual object containing repo json', async ()=>{
+    let repoUser = "ffraniel";
+    let data = await getUser(repoUser);
+    expect(typeof data).toBe("object");
+    expect(data.login).toBe(repoUser);
 })

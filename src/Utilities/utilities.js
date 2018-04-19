@@ -38,3 +38,16 @@ export const getRepo = (owner, name) =>{
         return res;
     })
 }
+
+
+export const getUser = (user) => {
+    return fetch(`https://api.github.com/users/${user}`, {
+        headers:{
+            Accept:"application/vnd.github.v3+json"
+        }
+    })
+    .then(resbuffer => resbuffer.json())
+    .then((res)=>{
+        return res;
+    })
+}
