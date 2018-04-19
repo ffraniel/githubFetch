@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fetchRepos, useRepos, paginateCalc } from '../utilities';
+import { fetchRepos, useRepos, paginateCalc, getRepo } from '../utilities';
 
 test('fetchRepos returns response from github', async () => {
     const data = await fetchRepos('test', 1);
@@ -104,4 +104,15 @@ test('paginationCalc works out how many pages they are', () => {
     const numberOfPages2 = paginateCalc(fakeReponse4)
     expect(numberOfPages2).toBe(9);
 
+})
+
+test('getRepo returns an individual object containing repo json', async ()=>{
+    let repoUser = "ffraniel";
+    let repoName = "jenniW";
+    let data = await getRepo(repoUser, repoName);
+    console.log(data)
+    expect(1+1).toBe(2);
+    expect(typeof data).toBe("object");
+    expect(data.name).toBe(repoName);
+    expect(data.owner.login).toBe(repoUser);
 })
