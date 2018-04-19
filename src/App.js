@@ -33,8 +33,8 @@ class App extends Component {
 
       this.setState(useRepos(data, this.state))
 
-      let paginatedNumber = paginateCalc(data);
-
+      let paginatedNumber = await paginateCalc(data);
+      
       this.setState({
           searchValue:'',
           numberOfPages:paginatedNumber
@@ -48,7 +48,7 @@ class App extends Component {
           <Header handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
           <Switch >
             <Route exact path="/" render={props => <RepoList {...props} repos={this.state.foundRepos} />} />
-            <Route path="/repo/:repoID" component={RepoFull} />
+            <Route path="/repo/:owner/:name" component={RepoFull} />
             <Route default component={BlankList}/>
           </Switch>
         </div>
