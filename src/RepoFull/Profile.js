@@ -3,12 +3,20 @@ import './Profile.css';
 
 class Profile extends Component {
     render() {
+        const user = this.props.user;
         return (
-            <div className="profile">
-                <img alt="user profile" className="profilePicture" src="https://www.telegraph.co.uk/content/dam/video_previews/f/k/fkaxcwzde6czkusive6ilzshbfccvqo-xlarge.jpg" />
-                <p>BEN BOBBINGTONS</p>
-                <p>Forks: 7</p>
-                <p>AboutME: I'm a cool dude</p>
+            <div className="user-profile">
+                <a href={user.html_url}>
+                    <h3 className="user-login">{user.login}</h3>
+                </a>
+                <img alt="user profile" className="avatar" src={user.avatar_url} />
+                <p className="user-name">{user.name}</p>
+                <p className="user-created">Joined: {user.created_at}</p>
+                <p className="user-location">{user.location}</p>
+                <p className="user-bio">{user.bio}</p>
+                <p className="user-publicRepos">Public Repos: {user.public_repos}</p>
+                <p className="user-followers">Followers: {user.followers}</p>
+                <p className="user-following">Following: {user.following}</p>
             </div>
         )
     }
