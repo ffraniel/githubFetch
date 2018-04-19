@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Repo.css';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Repo extends Component {
     render() {
@@ -17,6 +18,10 @@ class Repo extends Component {
             </div>
         )
     }
+}
+
+Repo.propTypes = {
+    repo:PropTypes.object
 }
 
 export default Repo;
