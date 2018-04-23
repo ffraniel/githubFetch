@@ -12,4 +12,9 @@
 
 .searchBox{
     display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+.searchForm {
+    font-family: Arial, sans-serif;
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./RepoFull.css";
 import Profile from "./Profile";
 import { getRepo, getUser } from "../Utilities/utilities";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class RepoFull extends Component {
   constructor(props) {

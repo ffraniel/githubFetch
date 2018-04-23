@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './RepoList.css';
 import Repo from './Repo';
 import PaginationElement from './PaginationElement';
-import ListError from './ListError';
 import BlankList from '../BlankList/BlankList';
 import PropTypes from 'prop-types';
 import { paginateCalc } from '../Utilities/utilities';
@@ -79,7 +78,7 @@ class RepoList extends Component {
         return (
             <div className="repoList">
                 <PaginationElement numberOfPages={this.state.numberOfPages} page={this.state.page} changePage={this.changePage} />
-                    {this.props.loading === true && <h1>LOAAAAAADDING</h1>}
+                    {this.props.loading === true && <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}
                     {this.props.repos && this.props.repos.length === 0 && <BlankList />}
                     {!this.props.repos && <BlankList />}
                     {this.state.reposToShow && this.state.reposToShow.map((repo, key)=>{
