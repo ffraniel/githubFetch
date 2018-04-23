@@ -87,23 +87,12 @@ test('tests useRepos puts items in foundRepos', () => {
 })
 
 test('paginationCalc works out how many pages they are', () => {
-    const fakeReponse3 = { 
-        body:
-        { total_count: 245,
-        incomplete_results: false,
-        items: [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
-        }
-    };
-    const numberOfPages1 = paginateCalc(fakeReponse3);
-    expect(numberOfPages1).toBe(25);
-
-    const fakeReponse4 = { 
-        body: { total_count: 83}
-    };
-
-    const numberOfPages2 = paginateCalc(fakeReponse4)
-    expect(numberOfPages2).toBe(9);
-
+    const fakeRepos = [ {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1} ];
+    const numberOfPages1 = paginateCalc(fakeRepos);
+    expect(numberOfPages1).toBe(2);
+    const fakeReponse4 =  [ {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1}, {A:1} ];
+    const numberOfPages2 = paginateCalc(fakeReponse4);
+    expect(numberOfPages2).toBe(3);
 })
 
 test('getRepo returns an individual object containing repo json', async ()=>{

@@ -1,6 +1,6 @@
-export const fetchRepos = (searchValue, pageNum = 1) => {
+export const fetchRepos = (searchValue) => {
     let response = {};
-    return fetch(`https://api.github.com/search/repositories?q=${searchValue}&page=${pageNum}&per_page=10`, {
+    return fetch(`https://api.github.com/search/repositories?q=${searchValue}&per_page=100`, {
         headers:{
             Accept:"application/vnd.github.v3+json"
         }
@@ -22,8 +22,8 @@ export const useRepos = (searchResults, state) => {
     }
 } 
 
-export const paginateCalc = (data) => {
-    let numOfPages = Math.ceil(data.body.total_count / 10);
+export const paginateCalc = (repos) => {
+    let numOfPages = Math.ceil(repos.length / 10);
     return numOfPages; 
 }
 
