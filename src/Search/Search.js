@@ -6,8 +6,8 @@ class Search extends Component {
     render(){
         return(
         <form className="searchForm" onSubmit={this.props.handleSubmit}>
-            <input type="text" value={this.props.searchValue} onChange={this.props.handleChange} />
-            <input type="submit" />
+            <input type="text" className="searchBox" placeholder="search for a repo" value={this.props.searchValue} onChange={this.props.handleChange} />
+            <input type="submit" className="searchButton" />
         </form>
         )
     }

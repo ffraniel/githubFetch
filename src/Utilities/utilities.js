@@ -23,6 +23,9 @@ export const useRepos = (searchResults, state) => {
 } 
 
 export const paginateCalc = (repos) => {
+    if(!repos){
+        repos = [];
+    }
     let numOfPages = Math.ceil(repos.length / 10);
     return numOfPages; 
 }

@@ -1,5 +1,14 @@
 .header {
-    padding-bottom:10px;
-    padding-left:10px;
+    padding-bottom:2%;
+    padding-left:4%;
     border-bottom:0.25px solid black;
+}
+
+.header-title{
+    font-size:2rem;
+    color:white;
+    display:inline-block;
+    padding:15px;
+    background: radial-gradient( rgba(77, 68, 68, 0.295), #e7eaec71);
+    border-radius: 10px;
 }
