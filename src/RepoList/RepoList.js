@@ -31,9 +31,10 @@ class RepoList extends Component {
         })
     }
 
-    //call this when change page
     splitRepos(allRepos, pageNumber){
-    // split results and pass the correct ones to render
+    if(!allRepos) {
+        return;
+    }
         let endValue = pageNumber * 10;
         let startValue = endValue - 10;
         let currentRepos = allRepos.slice(startValue, endValue);
@@ -53,6 +54,7 @@ class RepoList extends Component {
                 this.setState({
                     page:pageNum
                 })
+                this.splitRepos(this.props.repos, this.state.page);
             }
         }
 
@@ -62,12 +64,14 @@ class RepoList extends Component {
                 this.setState({
                     page:pageNum
                 })
+                this.splitRepos(this.props.repos, this.state.page);
             }
         }
         if(typeof newPageNumber === "number"){
             this.setState({
                 page:newPageNumber
             })
+            this.splitRepos(this.props.repos, this.state.page);
         }
     }
 
@@ -75,9 +79,10 @@ class RepoList extends Component {
         return (
             <div className="repoList">
                 <PaginationElement numberOfPages={this.state.numberOfPages} page={this.state.page} changePage={this.changePage} />
-                    {this.props.loading === true && <div><h1>LOAAAAAADDING</h1></div>}
-                    {this.props.repos.length === 0 && <BlankList />}
-                    {this.props.repos && this.props.repos.map((repo, key)=>{
+                    {this.props.loading === true && <h1>LOAAAAAADDING</h1>}
+                    {this.props.repos && this.props.repos.length === 0 && <BlankList />}
+                    {!this.props.repos && <BlankList />}
+                    {this.state.reposToShow && this.state.reposToShow.map((repo, key)=>{
                         return (
                             <Repo repo={repo} key={key}/>
                         )
