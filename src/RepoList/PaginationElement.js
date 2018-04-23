@@ -4,41 +4,31 @@ import './PaginationElement.css';
 class PaginationElement extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            currentPage:this.props.page,
-            numberOfPages:this.props.numberOfPages
-        }
     }
 
     render() {
+        let pageSelectors = [];
+        for(let i = 0; i < this.props.numberOfPages; i ++){
+            pageSelectors.push(              
+            <li key={i+1}>
+                <button className="page-button" onClick={()=>{ this.props.changePage(i+1) } } >{i+1}</button>
+            </li>);
+
+        }
         return (
             <div className="PaginationElement">
+                {this.props.numberOfPages >= 1 &&
                 <ul className="page-button-list">
-                <p>current page: {this.state.currentPage}</p>
-                <p>number of page: {this.state.numberOfPages}</p>
+                <p>current page: {this.props.page}</p>
+                <p>number of page: {this.props.numberOfPages}</p>
                     <li>
-                        <button className="end-button">←</button>
+                        <button className="end-button" onClick={()=>{this.props.changePage("down")}} >←</button>
                     </li>
-                    {console.log(this.state)}
+                    {pageSelectors}
                     <li>
-                        <button className="page-button">1</button>
+                        <button className="end-button" onClick={()=>{this.props.changePage("up")}}>→</button>
                     </li>
-                    <li>
-                        <button className="page-button">2</button>
-                    </li>
-                    <li>
-                        <button className="page-button">3</button>
-                    </li>
-                    <li>
-                        <button className="page-button">4</button>
-                    </li>
-                    <li>
-                        <button className="page-button">5</button>
-                    </li>
-                    <li>
-                        <button className="end-button">→</button>
-                    </li>
-                </ul>
+                </ul>}
             </div>
         )
     }
