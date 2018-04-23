@@ -14,7 +14,7 @@ class App extends Component {
     this.state={
       foundRepos:[],
       searchValue:'',
-      data:{}
+      loading:false
 
     }
     this.handleChange = this.handleChange.bind(this);
@@ -29,14 +29,18 @@ class App extends Component {
 
   handleSubmit = async (event) => {
       event.preventDefault();
-      const data = await fetchRepos(this.state.searchValue, 1);
 
-      this.setState(useRepos(data, this.state))
-     
-          this.setState({
-              searchValue:'',
-              data:data
-          })
+      this.setState({
+        loading:true
+      })
+
+      const data = await fetchRepos(this.state.searchValue);
+      this.setState(useRepos(data, this.state));
+
+      this.setState({
+        searchValue:'',
+        loading:false
+      })
   }
 
   render() {
@@ -45,7 +49,7 @@ class App extends Component {
         <div className="App">
           <Header handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
           <Switch >
-            <Route exact path="/" render={props => <RepoList {...props} repos={this.state.foundRepos} data={this.state.data }numberOfPages={this.state.numberOfPages} page={this.state.page} />} />
+            <Route exact path="/" render={props => <RepoList {...props} loading={this.state.loading} repos={this.state.foundRepos} />} />
             <Route path="/repo/:owner/:name" component={RepoFull} />
             <Route default component={BlankList}/>
           </Switch>
