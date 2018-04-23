@@ -1,3 +1,13 @@
 .repoFull{
-    
+    padding:0 20%;
+    height:100vh;
+    background-color: rgb(224, 216, 216);
+}
+.repo-all-detail{
+    width:50%;
+    display:inline-block;
+}
+
+a{
+    text-decoration: none;
 }

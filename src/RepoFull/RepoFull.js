@@ -37,16 +37,17 @@ class RepoFull extends Component {
       <div className="repoFull">
         {this.state.repo.name && this.state.repo.owner.login && (
           <div>
+            <div className="repo-all-detail">
             <NavLink to="/" className="back-link">Home</NavLink>
             <a href={repo.html_url} >
-                <h3 className="repo-full-name">{repo.name}</h3>
+                <h3 className="repo-full-name">Project Name:{repo.name}</h3>
             </a>
             <a href={`https://github.com/${repo.owner.login}`}>
-                <p className="repo-full-author">{repo.owner.login}</p>
+                <p className="repo-full-author">Created By {repo.owner.login}</p>
             </a>    
             <div className="repo-info">
-              <p className="repo-created">{repo.created_at}</p>
-              <p className="repo-pushed">{repo.pushed_at}</p>
+              <p className="repo-created">Created: {repo.created_at}</p>
+              <p className="repo-pushed">Last updated: {repo.pushed_at}</p>
               <p className="repo-security">
                 Public: {repo.private === true && <span>False</span>}
                 {repo.private === false && <span>True</span>}
@@ -61,6 +62,7 @@ class RepoFull extends Component {
             <p className="repo-full-readme">
               all of the testds dsd dsi oiosof djdd
             </p>
+            </div>
             <Profile user={this.state.user} />
           </div>
         )}
