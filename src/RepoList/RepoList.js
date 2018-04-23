@@ -78,15 +78,20 @@ class RepoList extends Component {
         return (
             <div className="repoList">
                 <PaginationElement numberOfPages={this.state.numberOfPages} page={this.state.page} changePage={this.changePage} />
+
                     {this.props.loading === true && <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}
                     {this.props.repos && this.props.repos.length === 0 && <BlankList />}
                     {!this.props.repos && <BlankList />}
-                    {this.state.reposToShow && this.state.reposToShow.map((repo, key)=>{
-                        return (
-                            <Repo repo={repo} key={key}/>
-                        )
-                    })}
-                    <PaginationElement numberOfPages={this.state.numberOfPages} page={this.state.page} changePage={this.changePage} />
+                    {this.state.reposToShow && 
+                        <div className="grid-results">
+                            {this.state.reposToShow.map((repo, key)=>{
+                                return (
+                                    <Repo repo={repo} key={key}/>
+                                )
+                            })}
+                        </div>
+                        }
+                <PaginationElement numberOfPages={this.state.numberOfPages} page={this.state.page} changePage={this.changePage} />
             </div>
         )
     }
