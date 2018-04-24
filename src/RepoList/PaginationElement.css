@@ -10,5 +10,7 @@ li {
 
 .PaginationElement {
     text-align: center;
-    border:dotted 0.1px black;
+    border:dotted 0.1px rgba(138, 138, 138, 0.205);
+
+
 }

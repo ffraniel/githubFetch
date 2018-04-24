@@ -1,6 +1,8 @@
 .repo-list{
     border-top:black solid 1px;
-    border:solid black 1px;
+    border:solid 0.5px rgb(138, 138, 138);
+    box-shadow: 0px 0px 5px 0px #869eb1;
+    background-color: white;
     padding:0 20%;
     white-space: nowrap;
     overflow: hidden;

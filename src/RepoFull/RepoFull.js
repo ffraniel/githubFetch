@@ -43,8 +43,7 @@ class RepoFull extends Component {
               <a href={repo.html_url} > {repo.name}</a>
             </h3>
             <p className="repo-full-author">Created By 
-              <a className="repo-full-author" href={`https://github.com/${repo.owner.login}`}> {repo.owner.login}
-              </a>
+              <a className="repo-full-author" href={`https://github.com/${repo.owner.login}`}> {repo.owner.login}</a>
             </p>    
             <div className="repo-info">
               <p className="repo-created">Created: {repo.created_at}</p>
@@ -64,7 +63,7 @@ class RepoFull extends Component {
               
             </p>
             </div>
-            <div>
+            <div className="profile">
               <Profile user={this.state.user} />
             </div>
 
