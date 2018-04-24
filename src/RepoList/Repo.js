@@ -8,8 +8,12 @@ class Repo extends Component {
         let repo = this.props.repo;
         return(
             <div className="repo-list">
-                <h3 className="repo-list-name">{repo.name}</h3>
-                <p className="repo-list-author">Author: {repo.owner.login}</p>
+                <Link to={{pathname:`/repo/${repo.owner.login}/${repo.name}`}}>
+                    <h3 className="repo-list-name">{repo.name}</h3>
+                </Link>
+                <p className="repo-list-author">Author: 
+                    <a className="repo-full-author" href={`https://github.com/${repo.owner.login}`}> {repo.owner.login}</a>
+                </p>
                 <p className="repo-list-forks">Number of Forks: {repo.forks}</p>
                 <p className="repo-list-issues">Open issues: {repo.issues_open_count}</p>
                 <Link to={{pathname:`/repo/${repo.owner.login}/${repo.name}`}}>
