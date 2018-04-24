@@ -7,7 +7,7 @@ class Header extends Component {
     render(){
         return(
         <header className="header">
-          <h1 className="header-title">The Repo Room</h1>
+          <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="github logo" />
           <Search handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit} />
         </header>
         )

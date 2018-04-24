@@ -1,15 +1,16 @@
 .header {
-    padding-bottom:2%;
-    padding-left:4%;
-    border-bottom:0.25px solid black;
+    padding-bottom:15px;
+    padding-left:17%;
+    background-color:#373b41;
 }
 
-.header-title{
-    font-size:2rem;
+#logo {
+    width:33px;
+    height:33px;
     color:white;
-    display:inline-block;
-    padding:15px;
-    background: radial-gradient( rgba(77, 68, 68, 0.295), #e7eaec71);
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
+    filter: invert(100%);
+    padding:10px;
+    padding-top:10px;
+    text-justify: center;
+
 }

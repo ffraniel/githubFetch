@@ -5,6 +5,7 @@ import PaginationElement from './PaginationElement';
 import BlankList from '../BlankList/BlankList';
 import PropTypes from 'prop-types';
 import { paginateCalc } from '../Utilities/utilities';
+import Loading from '../Loading/Loading';
 
 class RepoList extends Component {
     constructor(props){
@@ -79,7 +80,7 @@ class RepoList extends Component {
             <div className="repoList">
                 <PaginationElement numberOfPages={this.state.numberOfPages} page={this.state.page} changePage={this.changePage} />
 
-                    {this.props.loading === true && <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}
+                    {this.props.loading === true && <Loading />}
                     {this.props.repos && this.props.repos.length === 0 && <BlankList />}
                     {!this.props.repos && <BlankList />}
                     {this.state.reposToShow && 

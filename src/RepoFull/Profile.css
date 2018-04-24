@@ -10,7 +10,7 @@
 }
 
 .avatar {
-    max-width: 300px;
+    width:100%;
     border:solid 1px black;
-    border-radius: 15px;
+    border-radius: 5px;
 }

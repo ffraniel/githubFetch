@@ -1,20 +1,26 @@
 .searchButton {
-    border: none;
-    box-shadow: 1px 2px #888888;
-    color: rgb(51, 45, 45);
-    text-align: center;
+    border:solid 1px rgb(58, 58, 58);
+    border-radius:5px;
+    color: rgb(194, 190, 190);
+    background-color:rgb(107, 107, 107);
     display: inline-block;
     font-size: 1rem;
 }
-.searchButton:active {
-    box-shadow: 1px 2px #888888;
-}
 
 .searchBox{
-    display: inline-block;
-    font-family: Arial, sans-serif;
+   font-family: Arial, sans-serif;
+   background-color:rgb(136, 136, 136);
+   border-radius:5px;
 }
 
 .searchForm {
     font-family: Arial, sans-serif;
+    display:inline-block;
+}
+
+input[type=text] {
+    background-color: rgb(184, 180, 180);
+}
+.searchButton {
+    margin-left: 5px;
 }

@@ -1,13 +1,29 @@
 .repoFull{
-    padding:0 20%;
+    padding:0 5%;
     height:100vh;
     background-color: rgb(224, 216, 216);
 }
 .repo-all-detail{
-    width:50%;
     display:inline-block;
+    border:solid red 1px;
 }
 
 a{
     text-decoration: none;
+}
+
+@media only screen and (min-width: 580px) {
+    .profile-grid{
+        display:grid;
+        grid-gap:10px;
+        grid-template-columns: repeat(2, 50%);
+    }
+}
+
+
+@media only screen and (max-width: 580px) {
+    .profile-grid{
+        display:grid;
+        grid-template-columns: 100%;
+    }
 }
