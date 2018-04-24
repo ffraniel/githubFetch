@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fetchRepos, useRepos, paginateCalc, getRepo, getUser } from '../utilities';
+import { fetchRepos, useRepos, paginateCalc, getRepo, getUser, splitRepoList } from '../utilities';
 
 test('fetchRepos returns response from github', async () => {
     const data = await fetchRepos('test', 1);
@@ -109,4 +109,43 @@ test('getUser returns an individual object containing repo json', async ()=>{
     let data = await getUser(repoUser);
     expect(typeof data).toBe("object");
     expect(data.login).toBe(repoUser);
+})
+
+test('check splitRepoList consistently splits the repos into groups of ten', ()=>{
+    let allRepos = [];
+    for(var i = 0; i < 75; i ++ ){
+        allRepos.push({i})
+    }
+    
+    let pageThree = splitRepoList(allRepos, 3);
+    expect(pageThree[0].i).toBe(20);
+    expect(pageThree[9].i).toBe(29);
+    expect(pageThree[5].i).toBe(25);
+    expect(pageThree.length).toBe(10);
+
+    let pageTwo = splitRepoList(allRepos, 2);
+    expect(pageTwo[0].i).toBe(10);
+    expect(pageTwo[9].i).toBe(19);
+    expect(pageTwo[5].i).toBe(15);
+    expect(pageTwo.length).toBe(10);
+
+    let pageSeven = splitRepoList(allRepos, 7);  
+    expect(pageSeven[0].i).toBe(60);
+    expect(pageSeven[5].i).toBe(65);
+    expect(pageSeven[9].i).toBe(69);
+    expect(pageSeven.length).toBe(10);
+
+    let pageThreeAgain = splitRepoList(allRepos, 3);
+    expect(pageThreeAgain[0].i).toBe(20);
+    expect(pageThreeAgain[5].i).toBe(25);
+    expect(pageThreeAgain[9].i).toBe(29);
+    expect(pageThreeAgain.length).toBe(10); 
+
+    let lessRepos = [];
+    for(var j = 0; j < 7; j ++ ){
+        lessRepos.push({j})
+    }
+    let lessReposSplitFirstPage = splitRepoList(lessRepos, 1)
+    expect(lessReposSplitFirstPage[0].j).toBe(0);
+    expect(lessReposSplitFirstPage.length).toBe(7);
 })

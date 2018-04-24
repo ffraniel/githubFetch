@@ -4,7 +4,7 @@ import Repo from './Repo';
 import PaginationElement from './PaginationElement';
 import BlankList from '../BlankList/BlankList';
 import PropTypes from 'prop-types';
-import { paginateCalc } from '../Utilities/utilities';
+import { paginateCalc, splitRepoList } from '../Utilities/utilities';
 import Loading from '../Loading/Loading';
 
 class RepoList extends Component {
@@ -31,13 +31,8 @@ class RepoList extends Component {
         })
     }
 
-    splitRepos(allRepos, pageNumber){
-    if(!allRepos) {
-        return;
-    }
-        let endValue = pageNumber * 10;
-        let startValue = endValue - 10;
-        let currentRepos = allRepos.slice(startValue, endValue);
+    async splitRepos(allRepos, pageNumber){
+        const currentRepos = await splitRepoList(allRepos, pageNumber);
         this.setState({
             reposToShow:currentRepos
         })
@@ -67,7 +62,7 @@ class RepoList extends Component {
                 this.splitRepos(this.props.repos, this.state.page);
             }
         }
-        if(typeof newPageNumber === "number"){
+        if(newPageNumber !== "up" && newPageNumber !== "down"){
             this.setState({
                 page:newPageNumber
             })

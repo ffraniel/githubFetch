@@ -54,3 +54,12 @@ export const getUser = (user) => {
         return res;
     })
 }
+
+export const splitRepoList = (allRepos, pageNumber) => {
+    if(!allRepos) {
+        return;
+    }
+    let endValue = pageNumber * 10;
+    let startValue = endValue - 10;
+    return allRepos.slice(startValue, endValue);
+}
