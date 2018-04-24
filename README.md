@@ -26,4 +26,4 @@ npm run test
 ```
 
 ## How to use
-You will be presented with a repo search page. From here use the form to search Github. If there are any results they will show below. From there you can click through the (paginated) search results and view a full view of an individual repo. As well as information about the repo it will also let you know about the author who created it. 
+You will be presented with a repo search page. From here use the form to search Github. If there are any results they will show below. From there you can click through the (paginated) search results and view a full view of an individual repo. There you can see information about the repo and details about the author who created it. 
