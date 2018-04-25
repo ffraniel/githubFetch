@@ -11,7 +11,7 @@ class Header extends Component {
           <Link to={{pathname:`/`}}>
             <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="github logo" />
           </Link>
-          <Search handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit} />
+          <Search handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit} searchValue={this.props.searchValue} />
         </header>
         )
     }
@@ -19,7 +19,8 @@ class Header extends Component {
 
 Header.propTypes = {
     handleChange: PropTypes.func,
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    searchValue: PropTypes.string
 }
 
 export default Header;

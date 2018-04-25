@@ -15,7 +15,8 @@ class Search extends Component {
 
 Search.propTypes = {
     handleChange: PropTypes.func,
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    searchValue: PropTypes.string
 }
 
 export default Search;

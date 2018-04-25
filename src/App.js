@@ -47,7 +47,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+          <Header handleChange={this.handleChange} handleSubmit={this.handleSubmit} searchValue={this.state.searchValue} />
           <Switch >
             <Route exact path="/" render={props => <RepoList {...props} loading={this.state.loading} repos={this.state.foundRepos} />} />
             <Route path="/repo/:owner/:name" component={RepoFull} />
